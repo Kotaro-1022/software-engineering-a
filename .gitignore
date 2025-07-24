@@ -2,3 +2,7 @@
 /dev_program_DB.zip
 
 .DS_Store
+
+/dev_program_DB/mydb/mydb.lck
+/dev_program_DB/mydb/mydb.log
+/dev_program_DB/mydb/mydb.properties

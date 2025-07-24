@@ -10,7 +10,6 @@ import java.util.Date;
 
 import util.DateUtil;
 import app.AppException;
-import app.cancel.CancelReservationForm;
 import app.checkin.CheckInRoomForm;
 import app.checkout.CheckOutRoomForm;
 import app.reservation.ReserveRoomForm;
@@ -38,7 +37,6 @@ public class CUI {
 				System.out.println("1: Reservation");
 				System.out.println("2: Check-in");
 				System.out.println("3: Check-out");
-				System.out.println("4: Cancel reservation");
 				System.out.println("9: End");
 				System.out.print("> ");
 
@@ -47,7 +45,7 @@ public class CUI {
 					selectMenu = Integer.parseInt(menu);
 				}
 				catch (NumberFormatException e) {
-					selectMenu = 5;
+					selectMenu = 4;
 				}
 
 				if (selectMenu == 9) {
@@ -63,9 +61,6 @@ public class CUI {
 						break;
 					case 3:
 						checkOutRoom();
-						break;
-					case 4:
-						cancelReservation();
 						break;
 				}
 			}
@@ -137,23 +132,6 @@ public class CUI {
 		checkoutRoomForm.setRoomNumber(roomNumber);
 		checkoutRoomForm.checkOut();
 		System.out.println("Check-out has been completed.");
-	}
-
-	private void cancelReservation() throws IOException, AppException {
-		System.out.println("Input reservation number");
-		System.out.print("> ");
-
-		String reservationNumber = reader.readLine();
-
-		if (reservationNumber == null || reservationNumber.length() == 0) {
-			System.out.println("Invalid reservation number");
-			return;
-		}
-
-		CancelReservationForm cancelReservationForm = new CancelReservationForm();
-		cancelReservationForm.setReservationNumber(reservationNumber);
-		cancelReservationForm.cancelReservation();
-		System.out.println("Cancellation has been completed.");
 	}
 
 	public static void main(String[] args) throws Exception {
